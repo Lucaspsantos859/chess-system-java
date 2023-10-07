@@ -4,6 +4,7 @@ public class Board {
 	private int rows;
 	private int columns;
 	private Piece[][] pieces;
+	
 	public Board(int rows, int columns) {
 		super();
 		this.rows = rows;
@@ -32,5 +33,11 @@ public class Board {
 	//metodo para retornar uma peça, dando uma linha e uma coluna
 	public Piece piece(Position position) {
 		return pieces[position.getRow()][position.getColumn()];
+	}
+	
+	//metodo para colocar uma peça no tabuleiro
+	public void placePiece(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position;
 	}
 }
