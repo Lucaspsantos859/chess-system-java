@@ -21,7 +21,7 @@ public class Board {
 		return columns;
 	}
 	
-	//metodo para retornar uma peça, dando uma linha e uma coluna
+	//metodo para retornar uma peï¿½a, dando uma linha e uma coluna
 	public Piece piece(int row, int column) {
 		if(!positionExists(row, column)) {
 			throw new BoardException("Position not on the board");
@@ -29,7 +29,7 @@ public class Board {
 		return pieces[row][column];
 	}
 	
-	//metodo para retornar uma peça, dando uma linha e uma coluna
+	//metodo para retornar uma peï¿½a, dando uma linha e uma coluna
 	public Piece piece(Position position) {
 		if(!positionExists(position)) {
 			throw new BoardException("Position not on the board");
@@ -37,7 +37,7 @@ public class Board {
 		return pieces[position.getRow()][position.getColumn()];
 	}
 	
-	//metodo para colocar uma peça no tabuleiro
+	//metodo para colocar uma peï¿½a no tabuleiro
 	public void placePiece(Piece piece, Position position) {
 		if(thereIsAPiece(position)) {
 			throw new BoardException("There is already a piece on position " + position);
@@ -46,16 +46,31 @@ public class Board {
 		piece.position = position;
 	}
 	
+	//metodo para remover peÃ§as
+	public Piece removePiece(Position position) {
+		if(!positionExists(position)) {
+			throw new BoardException("Position not on the board");
+		}
+		if(piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		
+		return aux;
+	}
+	
 	private boolean positionExists(int row, int column) {
 		return row >= 0 && row < rows && column >= 0 && column < columns;
 	}
 	
-	//metodo para saber se existe essa posição
+	//metodo para saber se existe essa posiï¿½ï¿½o
 	public boolean positionExists(Position position) {
 		return positionExists(position.getRow(), position.getColumn());
 	}
 	
-	//metodo para saber se tem uma peça na posição
+	//metodo para saber se tem uma peï¿½a na posiï¿½ï¿½o
 	public boolean thereIsAPiece(Position position) {
 		if(!positionExists(position)) {
 			throw new BoardException("Position not on the board");
