@@ -33,6 +33,7 @@ public class ChessMatch {
 		
 		//operação para verificar se existe uma peça na posição informada
 		validateSourcePosition(source);
+		validateTargetPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
 		
 		return (ChessPiece)capturedPiece;
@@ -55,6 +56,14 @@ public class ChessMatch {
 			throw new ChessException("There is no possible moves for the chosen piece");
 		}
 	}
+	
+	//metodo para validar posição de destino
+	private void validateTargetPosition(Position source, Position target) {
+		if(!board.piece(source).possibleMove(target)) {
+			throw new ChessException("The chosen piece can`t move to target position");
+		}
+	}
+	
 	//metodo para receber as coordenadas do xadrez
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
