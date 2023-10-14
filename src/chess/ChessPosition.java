@@ -20,14 +20,14 @@ public class ChessPosition {
 		return row;
 	}
 	
-	//metodo para converter a posição das colunas(letras) em numeros
+	//metodo para converter a posiï¿½ï¿½o das colunas(letras) em numeros
 	protected Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
 	
-	//metodo para coverter a posição das colunas(numero) em letras
+	//metodo para coverter a posiï¿½ï¿½o das colunas(numero) em letras
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	@Override
 	public String toString() {
